@@ -1,8 +1,10 @@
 package pl.jwichniarek;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.List;
 
 public class Main {
 
@@ -19,11 +21,11 @@ public class Main {
         String inputLetter;
 
 
-        System.out.println("Witaj! Wpisz literkę lub napisz 'end', aby zakończyć");
+        System.out.println(Colors.ANSI_CYAN + "Witaj! Wpisz literkę lub napisz 'end', aby zakończyć" + Colors.ANSI_RESET);
         printWord(word, guessedLetters);
 
         while (errorCounter < 6 && !(inputLetter = in.nextLine()).equals("end")) {
-        System.out.println("Wpisz kolejna literkę lub napisz 'end', aby zakończyć");
+        System.out.println(Colors.ANSI_BLUE + "Wpisz kolejna literkę lub napisz 'end', aby zakończyć" + Colors.ANSI_RESET);
 
         if (!word.toLowerCase().contains(inputLetter.toLowerCase())) {
             errorCounter++;
@@ -34,11 +36,11 @@ public class Main {
         guessedLetters.add(inputLetter);
         printWord(word, guessedLetters);
 
-        System.out.println("Errors: " + errorCounter);
+        System.out.println(Colors.ANSI_GREEN + "Errors: " + Colors.ANSI_RESET + Colors.ANSI_PURPLE + errorCounter + Colors.ANSI_RESET);
 
         if (errorCounter > 5) {
-                System.out.println("GAME OVER");
-                System.out.println("Slowo to " + "'" + word + "'");
+                System.out.println(Colors.ANSI_RED + "GAME OVER" + Colors.ANSI_RESET);
+                System.out.println(Colors.ANSI_YELLOW + "Slowo to " + "'" + word + "'" + Colors.ANSI_RESET);
         }
         }
     }
@@ -72,7 +74,9 @@ public class Main {
         }
         System.out.println();
         if (trueValue != true){
-            System.out.println("\nKoniec gry, udalo Ci sie odgadnac slowo " +"'"+word+"'"+ " Gratulacje");
+            System.out.println(Colors.ANSI_BLUE + "\nKoniec gry, udalo Ci sie odgadnac slowo " + "'"
+                    + Colors.ANSI_RESET +Colors.ANSI_PURPLE + word + "'" +
+                    Colors.ANSI_RESET + Colors.ANSI_BLUE + " Gratulacje" + Colors.ANSI_RESET);
             System.exit(0);
         }
     }
